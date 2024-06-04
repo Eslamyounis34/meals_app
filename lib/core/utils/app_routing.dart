@@ -10,7 +10,7 @@ abstract class AppRouting {
   static const kMeals = "/mealsScreen";
   static final router = GoRouter(routes: [
     GoRoute(
-      path: kCategories,
+      path: "/",
       builder: (context, state) => const CategoriesScreen(),
     ),
     GoRoute(
