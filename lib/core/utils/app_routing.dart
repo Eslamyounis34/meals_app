@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meals_app/features/categories_screen/categories_screen.dart';
-import 'package:meals_app/features/meal_details_screen/meal_details.dart';
-import 'package:meals_app/features/meals_screen/meals_screen.dart';
+import 'package:meals_app/presentation/categories_screen/categories_screen.dart';
+import 'package:meals_app/presentation/meal_details_screen/meal_details.dart';
+import 'package:meals_app/presentation/meals_screen/meals_screen.dart';
 
 abstract class AppRouting {
   static const kCategories = '/categoriesScreen';
