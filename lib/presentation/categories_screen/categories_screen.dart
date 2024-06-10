@@ -4,8 +4,8 @@ import 'dart:ui';
 import 'package:flutter/painting.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:meals_app/presentation/categories_screen/categories_screen_body.dart';
-import 'package:meals_app/presentation/categories_screen/category_item.dart';
+import 'package:meals_app/presentation/categories_screen/views/categories_screen_body.dart';
+import 'package:meals_app/presentation/categories_screen/views/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});

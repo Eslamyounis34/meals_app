@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/presentation/categories_screen/categories_listview.dart';
-import 'package:meals_app/presentation/categories_screen/category_item.dart';
+import 'package:meals_app/presentation/categories_screen/views/categories_listview.dart';
+import 'package:meals_app/presentation/categories_screen/views/category_item.dart';
 
 class CategoriesBody extends StatelessWidget {
   const CategoriesBody({super.key});

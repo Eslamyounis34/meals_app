@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meals_app/presentation/categories_screen/category_item.dart';
+import 'package:meals_app/core/widgets/custom_loading.dart';
+import 'package:meals_app/presentation/categories_screen/views/category_item.dart';
 import 'package:meals_app/presentation/categories_screen/cubits/categories_cubit.dart';
 import 'package:meals_app/presentation/categories_screen/cubits/categories_state.dart';
 
@@ -23,14 +24,11 @@ class CategoriesListView extends StatelessWidget {
             scrollDirection: Axis.vertical,
           );
         } else if (state is CategoriesScreenError) {
-          return const Center(
+          return Center(
               child: Text(
-                  'Error loading categories')); // Return an error message widget
+                  state.errMsg.toString())); // Return an error message widget
         } else {
-          return const Center(
-              child: CircularProgressIndicator(
-            color: Colors.white,
-          ));
+          return const CustomLoading();
         }
       },
     );
