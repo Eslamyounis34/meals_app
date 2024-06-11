@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:meals_app/core/errors/failures.dart';
 import 'package:meals_app/data/api_service.dart';
 import 'package:meals_app/domain/meals_repository.dart';
-import 'package:meals_app/domain/model/category_response/category.dart';
+import 'package:meals_app/domain/model/category_response/category_data.dart';
 import 'package:meals_app/domain/model/category_response/category_response.dart';
 
 class MealsRepositoryImbl extends MealsRepository {
@@ -12,12 +12,12 @@ class MealsRepositoryImbl extends MealsRepository {
   MealsRepositoryImbl({required this.apiService});
 
   @override
-  Future<Either<Failure, List<Category>>> fetchMealCategories() async {
+  Future<Either<Failure, List<CategoryData>>> fetchMealCategories() async {
     try {
       var data = await apiService.getData('categories.php');
-      List<Category> categories = [];
+      List<CategoryData> categories = [];
       for (var category in data['categories']) {
-        categories.add(Category.fromJson(category));
+        categories.add(CategoryData.fromJson(category));
       }
 
       return right(categories);
