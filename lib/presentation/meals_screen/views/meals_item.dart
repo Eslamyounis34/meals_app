@@ -1,17 +1,68 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:meals_app/core/utils/constants.dart';
+import 'package:meals_app/domain/model/meals_response/meal.dart';
 
 class MealsItem extends StatelessWidget {
-  const MealsItem({super.key});
+  const MealsItem({super.key, required this.meal});
+
+  final Meal meal;
 
   @override
+  @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      child: CachedNetworkImage(
-          imageUrl:
-              'https://www.themealdb.com/images/media/meals/1548772327.jpg'),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        elevation: 10,
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: CachedNetworkImage(
+                imageUrl: meal.strMealThumb.toString(),
+                height: double.infinity,
+                fit: BoxFit.cover, // Adjust fit as needed
+              ),
+            ),
+            Positioned(
+              // Ensure it covers the entire bottom area
+              bottom: 0.0,
+              left: 0.0,
+              right: 0.0, // Set right to 0.0 for full width
+              child: Container(
+                height: 50.0, // Adjust height as needed
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                      kPrimaryColor.withOpacity(0.9),
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 5.0, // Adjust positioning as needed
+              left: 5.0, // Adjust positioning as needed
+              child: Text(
+                meal.strMeal.toString(),
+                maxLines: 2, // Set maxLines to 2 for wrapping
+                overflow:
+                    TextOverflow.ellipsis, // Handle overflow with ellipsis
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14.0,
+                  fontFamily: 'NotoSansSundanese-Bold',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
