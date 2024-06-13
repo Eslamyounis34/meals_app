@@ -7,8 +7,6 @@ class MealsItem extends StatelessWidget {
   const MealsItem({super.key, required this.meal});
 
   final Meal meal;
-
-  @override
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,26 +28,31 @@ class MealsItem extends StatelessWidget {
               bottom: 0.0,
               left: 0.0,
               right: 0.0, // Set right to 0.0 for full width
-              child: Container(
-                height: 50.0, // Adjust height as needed
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    colors: [
-                      kPrimaryColor.withOpacity(0.9),
-                      Colors.transparent,
-                    ],
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Container(
+                  height: 50.0, // Adjust height as needed
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        kPrimaryColor.withOpacity(1),
+                        Colors.transparent,
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
             Positioned(
-              bottom: 5.0, // Adjust positioning as needed
-              left: 5.0, // Adjust positioning as needed
+              bottom: 5.0,
+              left: 10.0,
+              right: 5.0, // Adjust positioning as needed
               child: Text(
                 meal.strMeal.toString(),
-                maxLines: 2, // Set maxLines to 2 for wrapping
+                maxLines: 2,
+                softWrap: true, // Allow wrapping within maxLines
                 overflow:
                     TextOverflow.ellipsis, // Handle overflow with ellipsis
                 style: const TextStyle(

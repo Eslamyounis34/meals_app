@@ -17,7 +17,7 @@ class MealsListView extends StatelessWidget {
           return GridView.count(
             crossAxisCount: 2, // Set the number of columns to 2
             shrinkWrap: true,
-            childAspectRatio: 1 / 1.3,
+            childAspectRatio: 1 / 1.2,
             physics: const NeverScrollableScrollPhysics(),
             children: state.meals.map((meal) => MealsItem(meal: meal)).toList(),
           );
