@@ -5,6 +5,7 @@ import 'package:meals_app/data/api_service.dart';
 import 'package:meals_app/domain/meals_repository.dart';
 import 'package:meals_app/domain/model/category_response/category_data.dart';
 import 'package:meals_app/domain/model/category_response/category_response.dart';
+import 'package:meals_app/domain/model/meal_details_response/meal_item.dart';
 import 'package:meals_app/domain/model/meals_response/meal.dart';
 
 class MealsRepositoryImbl extends MealsRepository {
@@ -42,6 +43,20 @@ class MealsRepositoryImbl extends MealsRepository {
         mealsList.add(Meal.fromJson(meal));
       }
       return right(mealsList);
+    } catch (e) {
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, MealItem>> fetchMealDetails(String mealID) async {
+    try {
+      var data = await apiService
+          .getData(endPoint: 'lookup.php', query: {'i': mealID});
+      return right(data['meals']);
     } catch (e) {
       if (e is DioError) {
         return left(ServerFailure.fromDioError(e));
