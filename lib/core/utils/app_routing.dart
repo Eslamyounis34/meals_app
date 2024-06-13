@@ -23,8 +23,12 @@ abstract class AppRouting {
           return MealsScreen(category: categoryItem);
         }),
     GoRoute(
-      path: kMealDetails,
-      builder: (context, state) => const MealDetailsScreen(),
-    )
+        path: kMealDetails,
+        builder: (context, state) {
+          String mealID = state.extra as String;
+          return MealDetailsScreen(
+            mealID: mealID,
+          );
+        })
   ]);
 }
