@@ -34,14 +34,40 @@ class CategoryItem extends StatelessWidget {
                 width: 100,
               ),
               const SizedBox(
-                width: 20,
+                width: 1,
               ),
-              Text(
-                category.strCategory.toString(),
-                style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'assets/fonts/NotoSansSundanese-Bold.ttf'),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        category.strCategory.toString(),
+                        style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            fontFamily:
+                                'assets/fonts/NotoSansSundanese-Bold.ttf'),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        category.strCategoryDescription.toString(),
+                        maxLines: 2,
+                        overflow: TextOverflow
+                            .ellipsis, // Handle overflow with ellipsis
+
+                        style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            fontFamily:
+                                'assets/fonts/NotoSansSundanese-Medium.ttf'),
+                      )
+                    ],
+                  ),
+                ),
               )
             ],
           ),
