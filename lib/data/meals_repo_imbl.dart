@@ -56,7 +56,7 @@ class MealsRepositoryImbl extends MealsRepository {
     try {
       var data = await apiService
           .getData(endPoint: 'lookup.php', query: {'i': mealID});
-      return right(data['meals']);
+      return right(MealItem.fromJson(data['meals'][0]));
     } catch (e) {
       if (e is DioError) {
         return left(ServerFailure.fromDioError(e));

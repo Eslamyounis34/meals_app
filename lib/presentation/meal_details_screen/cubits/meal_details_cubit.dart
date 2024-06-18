@@ -12,8 +12,10 @@ class MealDetailsCubit extends Cubit<MealDetailsStates> {
     var response = await mealsRepo.fetchMealDetails(mealID);
 
     response.fold((error) {
+      print('Details Error $error');
       emit(MealsDetailsError(error.toString()));
     }, (mealDetails) {
+      print('Details Success $mealDetails');
       emit(MealsDetailsSuccess(mealDetails));
     });
   }

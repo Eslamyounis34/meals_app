@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class IngradientItem extends StatelessWidget {
-  const IngradientItem({super.key});
+  const IngradientItem({super.key, required this.ingredientName});
+  final String ingredientName;
 
   @override
   Widget build(BuildContext context) {
@@ -10,13 +11,13 @@ class IngradientItem extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadiusDirectional.circular(16),
         child: Container(
-          color: Colors.grey,
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Burger Rebuplic',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ingredientName.toString(),
+              style: const TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ),
         ),

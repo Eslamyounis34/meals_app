@@ -2,18 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_app/core/utils/service_locator.dart';
+import 'package:meals_app/core/widgets/custom_loading.dart';
 import 'package:meals_app/data/meals_repo_imbl.dart';
 import 'package:meals_app/presentation/meal_details_screen/cubits/meal_details_cubit.dart';
+import 'package:meals_app/presentation/meal_details_screen/cubits/meal_details_states.dart';
+import 'package:meals_app/presentation/meal_details_screen/views/meal_desc_bottom_sheet.dart';
+import 'package:meals_app/presentation/meal_details_screen/views/meal_details_success_screen.dart';
 import 'package:meals_app/presentation/meal_details_screen/views/meals_details_body.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({super.key, required this.mealID});
-
   final String mealID;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // floatingActionButton: FloatingActionButton(
+      //     onPressed: () {
+      //       showModalBottomSheet(
+      //           context: context,
+      //           builder: (context) {
+      //             return MealBottomSheet(
+      //                 fullInstructionsString: fullInstructions.toString());
+      //           });
+      //     },
+      //     child: Icon(
+      //       Icons.keyboard_arrow_up,
+      //       color: Colors.black,
+      //     ), // Replace with your desired icon
+      //     backgroundColor: Colors.white),
       appBar: AppBar(
           leading: IconButton(
               onPressed: () {
