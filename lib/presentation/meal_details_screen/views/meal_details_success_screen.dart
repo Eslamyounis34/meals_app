@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:meals_app/core/utils/assets.dart';
 import 'package:meals_app/domain/model/meal_details_response/meal_item.dart';
 import 'package:meals_app/presentation/meal_details_screen/views/ingradient_item.dart';
 import 'package:meals_app/presentation/meal_details_screen/views/meal_desc_bottom_sheet.dart';
@@ -25,10 +27,20 @@ class MealDetailsSuccess extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CachedNetworkImage(
-                      imageUrl: meal.strMealThumb.toString(),
-                      fit: BoxFit.cover,
-                      width: double.infinity,
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CachedNetworkImage(
+                          imageUrl: meal.strMealThumb.toString(),
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                        ),
+                        Image.asset(
+                          AssetsData.youTubeLogo,
+                          width: 75,
+                          height: 75,
+                        )
+                      ],
                     ),
                     const SizedBox(
                       height: 20,

@@ -17,20 +17,6 @@ class MealDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //     onPressed: () {
-      //       showModalBottomSheet(
-      //           context: context,
-      //           builder: (context) {
-      //             return MealBottomSheet(
-      //                 fullInstructionsString: fullInstructions.toString());
-      //           });
-      //     },
-      //     child: Icon(
-      //       Icons.keyboard_arrow_up,
-      //       color: Colors.black,
-      //     ), // Replace with your desired icon
-      //     backgroundColor: Colors.white),
       appBar: AppBar(
           leading: IconButton(
               onPressed: () {
