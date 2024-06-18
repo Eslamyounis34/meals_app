@@ -5,6 +5,7 @@ import 'package:meals_app/core/utils/assets.dart';
 import 'package:meals_app/domain/model/meal_details_response/meal_item.dart';
 import 'package:meals_app/presentation/meal_details_screen/views/ingradient_item.dart';
 import 'package:meals_app/presentation/meal_details_screen/views/meal_desc_bottom_sheet.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MealDetailsSuccess extends StatelessWidget {
   const MealDetailsSuccess({super.key, required this.meal});
@@ -35,10 +36,15 @@ class MealDetailsSuccess extends StatelessWidget {
                           fit: BoxFit.cover,
                           width: double.infinity,
                         ),
-                        Image.asset(
-                          AssetsData.youTubeLogo,
-                          width: 75,
-                          height: 75,
+                        GestureDetector(
+                          onTap: () async {
+                            await launchMealVideo(context);
+                          },
+                          child: Image.asset(
+                            AssetsData.youTubeLogo,
+                            width: 75,
+                            height: 75,
+                          ),
                         )
                       ],
                     ),
@@ -143,6 +149,20 @@ class MealDetailsSuccess extends StatelessWidget {
     );
   }
 
+  Future<void> launchMealVideo(BuildContext context) async {
+    final youtubeUrl =
+        Uri.parse(meal.strYoutube.toString()); // Replace with your Youtube URL
+    if (await canLaunch(meal.strYoutube.toString())) {
+      await launchUrl(youtubeUrl);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Could not launch Youtube'),
+        ),
+      );
+    }
+  }
+
   List getIngredientsList() {
     var ingredientsList = [];
     ingredientsList.add(meal.strIngredient1);
@@ -154,5 +174,13 @@ class MealDetailsSuccess extends StatelessWidget {
     ingredientsList.add(meal.strIngredient7);
 
     return ingredientsList;
+  }
+
+  void launchYoutubeUrl(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

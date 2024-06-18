@@ -19,10 +19,12 @@ class MealDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
-              onPressed: () {
-                GoRouter.of(context).pop();
-              },
-              icon: const Icon(Icons.arrow_back_outlined))),
+        onPressed: () {
+          GoRouter.of(context).pop();
+        },
+        icon: const Icon(Icons.arrow_back_outlined),
+        iconSize: 45,
+      )),
       body: BlocProvider(
         create: (context) => MealDetailsCubit(getIt.get<MealsRepositoryImbl>())
           ..fetchMealDetails(mealID),
